@@ -8,12 +8,11 @@ import { redirect } from "next/navigation";
 import Spinner from "../components/layout/Spinner";
 import useInactivityTimeout from "../hooks/useInactivityTimeout";
 
-export const timeOut: number = 1000 * 60 * 60;
 const History = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { state } = useAuthContext();
 
-  useInactivityTimeout(timeOut);
+  useInactivityTimeout(1000 * 60 * 60);
 
   useEffect(() => {
     const user = state.user;

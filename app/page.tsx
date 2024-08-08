@@ -7,12 +7,11 @@ import { useAuthContext } from "./context/AuthContextProvider";
 import { redirect } from "next/navigation";
 import Spinner from "./components/layout/Spinner";
 import useInactivityTimeout from "./hooks/useInactivityTimeout";
-import { timeOut } from "./history/page";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const { state } = useAuthContext();
-  useInactivityTimeout(timeOut);
+  useInactivityTimeout(1000 * 60 * 60);
   useEffect(() => {
     const user = state.user;
     if (!user.id || !user.role || !user.username) {

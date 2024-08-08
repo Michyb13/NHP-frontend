@@ -7,13 +7,12 @@ import { redirect, useParams } from "next/navigation";
 import { useAuthContext } from "@/app/context/AuthContextProvider";
 import Spinner from "@/app/components/layout/Spinner";
 import useInactivityTimeout from "@/app/hooks/useInactivityTimeout";
-import { timeOut } from "@/app/history/page";
 
 const ProfilePage = () => {
   const { userId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const { state } = useAuthContext();
-  useInactivityTimeout(timeOut);
+  useInactivityTimeout(1000 * 60 * 60);
 
   useEffect(() => {
     const user = state.user;
